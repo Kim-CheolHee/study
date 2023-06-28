@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>HTML 공부</title>
+     
+     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+     <style>
+        .container{
+            background-color: blueviolet;
+        }
+     </style>
+     <script src="greeting.js"></script>
+</head>
+<body>
+    <div class="container" style="color: azure;">
+        <ol>
+            <li>자</li>
+            <li>축</li>
+            <li>인</li>
+            <li>묘</li>
+        </ol>
+        <br>
+        <ul>
+            <li>진</li>
+            <li>사</li>
+            <li>오</li>
+            <li>미</li>
+        </ul>
+    </div>
+
+    <img src="welcome.jpeg" width="300" height="" title="welcome image" alt="welcome 이미지"><br>
+
+    <table border="2" 
+        style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>나이</th>
+                <th>성별</th>
+                <th>주소</th>
+                <th>회비</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>김철희</td>
+                <td>31</td>
+                <td>남</td>
+                <td rowspan="2">광주</td>
+                <td>10,000</td>
+            </tr>
+            <tr>
+                <td>심윤지</td>
+                <td>27</td>
+                <td>여</td>
+                <td>5,000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">합계</td>
+                <td>15,000</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form action="">
+        <fieldset>
+            <legend>로그인</legend>
+            <label for="id">아이디: </label>
+            <input type="text" id="id" name="id"><br>
+            <label for="pw">비밀번호: </label>
+            <input type="password" id="pw" name="pw"><br>
+            <label for="textbox">내 용</label><br>
+            <textarea name="textbox" id="textbox" cols="30" rows="5">
+                내용을 입력하세요
+            </textarea><br>
+            <input type="hidden" name="hide" id="hide" value="숨김">
+            <input type="submit" value="로그인">
+        </fieldset>
+    </form>
+    <script>
+        const handler = id => e => {
+            console.log(`여길 클릭했구나! ${e.offsetX} ${e.offsetY}}`)
+        }
+        document.addEventListener('click', handler())
+
+        const cache = (fn) => (a) => (b) => fn(a, b)
+        const add = (c, d) => c + d
+        console.log(cache(add)('Kim')(' Sym'))
+        const hellofn = cache(add)('hello')
+        console.log(hellofn(' Javascript!'))
+
+        // .을 두개 이상 쓴다면 에러 방지를 위해 두번째 . 앞에 ?를 붙여준다.
+        // 다만 에러를 해결한건 아니고 에러가 발생하면 undefined를 반환한다.
+        var user = {
+            name : 'Kim',
+            // age : {value : 20}
+        }
+        console.log(user.age?.value)
+
+        // ?? 연산자
+        // ?? 연산자는 왼쪽 피연산자가 null이나 undefined일 때 오른쪽 피연산자를 반환하고, 그렇지 않으면 왼쪽 피연산자를 반환한다.
+        // ?? 연산자는 변수에 기본값을 설정할 때 유용하다.
+        var a = null
+        var b = undefined
+        var c = 0
+        var d = ''
+        var e = NaN
+        var f = false
+        console.log(a ?? 'null')
+        console.log(b ?? 'undefined')
+        console.log(c ?? 'default')
+        console.log(d ?? 'default')
+        console.log(e ?? 'default')
+        console.log(f ?? 'default')
+    </script>
+
+    <form action="">
+        <h1>색상</h1>
+            <select name="color">
+                <option value="red">붉은색</option>
+                <option value="orange">주황색</option>
+                <option value="yellow">노란색</option>
+            </select>
+            <input type="submit" name="" id="">
+    </form>
+    <form action="">
+        <h1>색상2 (multiple)</h1>
+            <select name="color" multiple>
+                <option value="red">붉은색</option>
+                <option value="orange">주황색</option>
+                <option value="yellow">노란색</option>
+            </select>
+            <input type="submit" name="" id="">
+    </form>
+
+    <form action="">
+        <p>
+            <h1>색상</h1>
+            Red<input type="radio" name="color" id="" value="Red" checked>
+            Green<input type="radio" name="color" id="" value="Green">
+            Blue<input type="radio" name="color" id="" value="Blue">
+        </p>
+        <p>
+            <h1>사이즈(다중선택)</h1>
+            95<input type="checkbox" name="size" id="" value="95" checked>
+            100<input type="checkbox" name="size" id="" value="100">
+            105<input type="checkbox" name="size" id="" value="105" checked>
+        </p>
+        <input type="submit" name="" id="">
+    </form>
+    <input type="reset" name="" id="">
+</body>
+</html>
